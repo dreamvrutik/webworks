@@ -19,4 +19,7 @@ from school import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
+    path('pre',views.pre),
+    path('middle',views.middle),
+    path('high',views.high),
 ]
