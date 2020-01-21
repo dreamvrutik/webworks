@@ -1,8 +1,15 @@
 from django.shortcuts import render
-
+from school.models import *
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    obj=approach.objects.all()
+    data=[]
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        a.append(i.details)
+        data.append(a)
+    return render(request,'index.html',context={'data':data})
 
 def pre(request):
     return render(request,'pre.html')
