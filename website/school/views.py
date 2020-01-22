@@ -42,22 +42,129 @@ def index(request):
     return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves})
 
 def pre(request):
-    return render(request,'pre.html')
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
+    return render(request,'pre.html',context={'no_of_events':ct,'events':eves})
 
 def middle(request):
-    return render(request,'middle.html')
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
+
+    return render(request,'middle.html',context={'no_of_events':ct,'events':eves})
 
 def high(request):
-    return render(request,'high.html')
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
+
+    return render(request,'high.html',context={'no_of_events':ct,'events':eves})
 
 def display_approach(request,title):
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
     title=title.replace('_',' ')
     obj=approach.objects.get(name=title)
     data=[title,obj.details]
-    return render(request,'approach.html',context={'data':data})
+    return render(request,'approach.html',context={'data':data,'no_of_events':ct,'events':eves})
 
 def display_event(request,title):
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
     title=title.replace('_',' ')
     obj=events.objects.get(name=title)
     data=[title,obj.date,obj.details]
-    return render(request,'events.html',context={'data':data})
+    return render(request,'events.html',context={'data':data,'no_of_events':ct,'events':eves})
