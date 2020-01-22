@@ -19,3 +19,9 @@ def middle(request):
 
 def high(request):
     return render(request,'high.html')
+
+def display_approach(request,title):
+    title=title.replace('_',' ')
+    obj=approach.objects.get(name=title)
+    data=[title,obj.details]
+    return render(request,'approach.html',context={'data':data})
