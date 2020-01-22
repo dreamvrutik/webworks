@@ -29,10 +29,15 @@ def index(request):
         a.append(x)
         img="/media/"+str(i.image)
         a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
         eves.append(a)
         ct+=1
         if ct==2:
             break
+        
 
     return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves})
 
@@ -50,9 +55,3 @@ def display_approach(request,title):
     obj=approach.objects.get(name=title)
     data=[title,obj.details]
     return render(request,'approach.html',context={'data':data})
-
-def display_event(request,title):
-    title=title.replace('_',' ')
-    obj=events.objects.get(name=title)
-    data=[title,obj.date,obj.details]
-    return render(request,'events.html',context={'data':data})
