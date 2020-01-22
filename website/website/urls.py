@@ -26,6 +26,7 @@ urlpatterns = [
     path('middle',views.middle),
     path('high',views.high),
     path('approach/<title>',views.display_approach),
+    path('events/<title>',views.display_event),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
