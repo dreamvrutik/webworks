@@ -273,23 +273,19 @@
 		{% for i in data %}
           <div class="col-md-5 col-lg-4 ftco-animate">
             <div class="blog-entry">
-				<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
-					<div class="meta-date text-center p-2">
-					<span class="day">27</span>
-					<span class="mos">January</span>
-					<span class="yr">2019</span>
-					</div>
+				<a href="{{i.2}}" class="block-20 d-flex align-items-end" style="background-image: url({{i.3}});">
+
 				</a>
               <div class="text bg-white p-4">
-                <h3 class="heading"><a href="#">{{i.0}}			
+                <h3 class="heading"><a href="#">{{i.0}}
 				</a></h3>
                 <p>
 					{% if i.0|length < 34 %}
 					<br>
-					{% endif %}		
+					{% endif %}
 					{{i.1}}...</p>
                 <div class="d-flex align-items-center mt-4">
-	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="mb-0"><a href="{{i.2}}" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
                 </div>
               </div>
             </div>
@@ -298,7 +294,7 @@
         </div>
 			</div>
 		</section>
-    
+
 		<section class="ftco-gallery">
     	<div class="container-wrap">
     		<div class="row no-gutters">
@@ -352,29 +348,26 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <h2 class="ftco-heading-2">Upcoming Events</h2>
+              {% if no_of_events == 0  %}
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_1.jpg' %});"></a>
                 <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
+                  <h3 class="heading"><a>No Upcoming Events</a></h3>
+
                 </div>
               </div>
+              {% endif %}
+              {% for i in events %}
               <div class="block-21 mb-5 d-flex">
-                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_2.jpg' %});"></a>
+                <a class="blog-img mr-4" style="background-image: url({{i.2}});"></a>
                 <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <h3 class="heading"><a href="#">{{i.0}}</a></h3>
                   <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                    <div><a href="#"><span class="icon-calendar"></span>&nbsp;{{i.1}}</a></div>
                   </div>
                 </div>
               </div>
+              {% endfor %}
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
