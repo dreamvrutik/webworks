@@ -22,4 +22,5 @@ urlpatterns = [
     path('pre',views.pre),
     path('middle',views.middle),
     path('high',views.high),
+    path('approach/<title>',views.display_approach)
 ]
