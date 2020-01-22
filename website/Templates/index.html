@@ -271,18 +271,30 @@
         </div>
 		<div class="row">
 		{% for i in data %}
-          <div class="col-md-6 col-lg-4 ftco-animate">
+          <div class="col-md-5 col-lg-4 ftco-animate">
             <div class="blog-entry">
+				<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
+					<div class="meta-date text-center p-2">
+					<span class="day">27</span>
+					<span class="mos">January</span>
+					<span class="yr">2019</span>
+					</div>
+				</a>
               <div class="text bg-white p-4">
-                <h3 class="heading"><a href="#">{{i.0}}</a></h3>
-                <p>{{i.1}}</p>
+                <h3 class="heading"><a href="#">{{i.0}}			
+				</a></h3>
+                <p>
+					{% if i.0|length < 34 %}
+					<br>
+					{% endif %}		
+					{{i.1}}...</p>
                 <div class="d-flex align-items-center mt-4">
 	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
                 </div>
               </div>
             </div>
 		  </div>
-		  {%endfor%}
+		  {% endfor %}
         </div>
 			</div>
 		</section>
