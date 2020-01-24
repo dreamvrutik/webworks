@@ -56,7 +56,7 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-              <h1 class="mb-2 bread">Gallery</h1>
+              <h1 class="mb-2 bread">Upcoming Events</h1>
             </div>
           </div>
         </div>
@@ -68,7 +68,15 @@
       </div>
     </div>
     <div class="row">
-    {% for i in data %}
+    {% if no_of_events == 0 %}
+    <div class="col-md-5 col-lg-4 ftco-animate">
+      <div class="blog-entry">
+        <h1> No Upcoming Events</h1>
+      </div>
+    </div>
+    {% else %}
+
+    {% for i in eventlist %}
       <div class="col-md-5 col-lg-4 ftco-animate">
         <div class="blog-entry">
             <a href="{{i.2}}" class="block-20 d-flex align-items-end" style="background-image: url({{i.3}});">
@@ -93,6 +101,7 @@
         </div>
       </div>
       {% endfor %}
+      {% endif %}
     </div>
         </div>
     </section>
@@ -119,7 +128,7 @@
                 <div class="block-21 mb-4 d-flex">
                   <div class="text">
                     <h3 class="heading"><a>No Upcoming Events</a></h3>
-  
+
                   </div>
                 </div>
                 {% endif %}
@@ -165,8 +174,8 @@
           </div>
         </div>
       </footer>
-  
-  
+
+
 
 
   <!-- loader -->
