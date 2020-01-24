@@ -185,4 +185,55 @@ def gallery(request):
             print(e)
             continue
     print(grouplist)
-    return render(request,"gallery.html",context={'grouplist':grouplist})
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+    return render(request,"gallery.html",context={'grouplist':grouplist,'no_of_events':ct,'events':eves})
+
+def gallery_group(request,name):
+    name=name.replace('_',' ')
+    obj=groups.objects.get(group_name=name)
+    obj=group_images.objects.filter(group_name=obj)
+    name=name.upper()
+    imagelist=[]
+    for i in obj:
+        imagelist.append("/media/"+str(i.image))
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
+    return render(request,'group_gallery.html',context={'name':name,'imagelist':imagelist,'no_of_events':ct,'events':eves})
