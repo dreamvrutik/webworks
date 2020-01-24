@@ -174,12 +174,15 @@ def gallery(request):
     obj=groups.objects.all()
     for i in obj:
         a=[]
-        a.append(i.name.upper())
+        a.append(i.group_name.upper())
+        print(a)
         try:
             obj1=group_images.objects.filter(group_name=i)
-            a.append("/media/"+obj1[0].image)
+            a.append("/media/"+str(obj1[0].image))
             a.append("/gallery/"+i.group_name.replace(" ","_"))
             grouplist.append(a)
         except Exception as e:
-            a.append()
+            print(e)
+            continue
+    print(grouplist)
     return render(request,"gallery.html",context={'grouplist':grouplist})
