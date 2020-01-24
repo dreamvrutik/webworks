@@ -237,3 +237,28 @@ def gallery_group(request,name):
             break
 
     return render(request,'group_gallery.html',context={'name':name,'imagelist':imagelist,'no_of_events':ct,'events':eves})
+
+def events(request):
+    eventlist=[]
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        a.append(i.details[0:100]+"...")
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        if ct<2:
+            ct+=1
+            eves.append(a)
+        eventlist.append(a)
+    return render(request,'eventlist.html',context={'no_of_events':ct,'eves':eves,'eventlist':eventlist})
