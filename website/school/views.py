@@ -168,3 +168,18 @@ def display_event(request,title):
     obj=events.objects.get(name=title)
     data=[title,obj.date,obj.details]
     return render(request,'events.html',context={'data':data,'no_of_events':ct,'events':eves})
+
+def gallery(request):
+    grouplist=[]
+    obj=groups.objects.all()
+    for i in obj:
+        a=[]
+        a.append(i.name.upper())
+        try:
+            obj1=group_images.objects.filter(group_name=i)
+            a.append("/media/"+obj1[0].image)
+            a.append("/gallery/"+i.group_name.replace(" ","_"))
+            grouplist.append(a)
+        except Exception as e:
+            a.append()
+    return render(request,"gallery.html",context={'grouplist':grouplist})
