@@ -456,7 +456,7 @@ def about(request):
     for i in about:
         data=i.details
         break
-    return render(request,"about.html",context={'no_of_events':ct,'events':events,'contact':con,'data':data})
+    return render(request,"about.html",context={'no_of_events':ct,'events':eves,'contact':con,'data':data})
 
 def contact(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
