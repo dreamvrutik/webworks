@@ -37,9 +37,15 @@ def index(request):
         ct+=1
         if ct==2:
             break
-
-
-    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con})
 
 def pre(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -62,8 +68,16 @@ def pre(request):
         ct+=1
         if ct==2:
             break
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
 
-    return render(request,'pre.html',context={'no_of_events':ct,'events':eves})
+    return render(request,'pre.html',context={'no_of_events':ct,'events':eves,'contact':con})
 
 def middle(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -86,9 +100,15 @@ def middle(request):
         ct+=1
         if ct==2:
             break
-
-
-    return render(request,'middle.html',context={'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'middle.html',context={'no_of_events':ct,'events':eves,'contact':con})
 
 def high(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -112,8 +132,15 @@ def high(request):
         if ct==2:
             break
 
-
-    return render(request,'high.html',context={'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'high.html',context={'no_of_events':ct,'events':eves,'contact':con})
 
 def display_approach(request,title):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -140,7 +167,16 @@ def display_approach(request,title):
     title=title.replace('_',' ')
     obj=approach.objects.get(name=title)
     data=[title,obj.details]
-    return render(request,'approach.html',context={'data':data,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'approach.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con})
+
 
 def display_event(request,title):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -167,7 +203,15 @@ def display_event(request,title):
     title=title.replace('_',' ')
     obj=events.objects.get(name=title)
     data=[title,obj.date,obj.details]
-    return render(request,'events.html',context={'data':data,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'events.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con})
 
 def gallery(request):
     grouplist=[]
@@ -205,7 +249,15 @@ def gallery(request):
         ct+=1
         if ct==2:
             break
-    return render(request,"gallery.html",context={'grouplist':grouplist,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,"gallery.html",context={'grouplist':grouplist,'no_of_events':ct,'events':eves,'contact':con})
 
 def gallery_group(request,name):
     name=name.replace('_',' ')
@@ -235,8 +287,15 @@ def gallery_group(request,name):
         ct+=1
         if ct==2:
             break
-
-    return render(request,'group_gallery.html',context={'name':name,'imagelist':imagelist,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'group_gallery.html',context={'name':name,'imagelist':imagelist,'no_of_events':ct,'events':eves,'contact':con})
 
 def event(request):
     eventlist=[]
@@ -277,7 +336,15 @@ def event(request):
         ct+=1
         if ct==2:
             break
-    return render(request,'eventlist.html',context={'no_of_events':ct,'events':eves,'eventlist':eventlist})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'eventlist.html',context={'no_of_events':ct,'events':eves,'eventlist':eventlist,'contact':con})
 
 def blog_page(request):
     bloglist=[]
@@ -311,7 +378,15 @@ def blog_page(request):
         ct+=1
         if ct==2:
             break
-    return render(request,"blog.html",context={'no_of_blogs':tc,'bloglist':bloglist,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,"blog.html",context={'no_of_blogs':tc,'bloglist':bloglist,'no_of_events':ct,'events':eves,'contact':con})
 
 def single_blog(request,title):
     title=title.replace('_',' ')
@@ -337,7 +412,15 @@ def single_blog(request,title):
             break
     obj=blogs.objects.get(title=title)
     data=[obj.title.upper(),obj.details]
-    return render(request,"single_blog.html",context={'data':data,'no_of_events':ct,'events':eves})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,"single_blog.html",context={'data':data,'no_of_events':ct,'events':eves,'contact':con})
 
 def about(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -360,7 +443,20 @@ def about(request):
         ct+=1
         if ct==2:
             break
-    return render(request,"about.html",context={'no_of_events':ct,'events':events})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    about=about_us.objects.all()
+    data=''
+    for i in about:
+        data=i.details
+        break
+    return render(request,"about.html",context={'no_of_events':ct,'events':events,'contact':con,'data':data})
 
 def contact(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -383,4 +479,12 @@ def contact(request):
         ct+=1
         if ct==2:
             break
-    return render(request,"contact.html",context={'no_of_events':ct,'events':events})
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,"contact.html",context={'no_of_events':ct,'events':events,'contact':con})

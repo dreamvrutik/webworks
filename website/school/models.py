@@ -50,6 +50,12 @@ def rename_blog(instance,filename):
     return os.path.join('images/', filename)
 
 class blogs(models.Model):
-    title=models.CharField(max_length=264)
     details=models.TextField(max_length=100000)
+    title=models.CharField(max_length=264)
     image=models.ImageField(upload_to=rename_blog)
+
+class contact_us(models.model):
+    address=models.TextField(max_length=100000)
+    mobile_number=models.CharField(max_length=264)
+    email=models.CharField(max_length=264)
+    
