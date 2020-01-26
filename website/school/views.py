@@ -277,4 +277,4 @@ def event(request):
         ct+=1
         if ct==2:
             break
-    return render(request,'eventlist.html',context={'no_of_events':ct,'eves':eves,'eventlist':eventlist})
+    return render(request,'eventlist.html',context={'no_of_events':ct,'events':eves,'eventlist':eventlist})
