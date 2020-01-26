@@ -5,3 +5,5 @@ admin.site.register(approach)
 admin.site.register(events)
 admin.site.register(groups)
 admin.site.register(group_images)
+admin.site.register(blogs)
+
