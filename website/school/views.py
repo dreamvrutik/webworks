@@ -487,4 +487,4 @@ def contact(request):
         con.append(i.mobile_number)
         con.append(i.email)
         break
-    return render(request,"contact.html",context={'no_of_events':ct,'events':events,'contact':con})
+    return render(request,"contact.html",context={'no_of_events':ct,'events':eves,'contact':con})
