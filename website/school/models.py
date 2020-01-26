@@ -42,3 +42,13 @@ def rename_image(instance,filename):
 class group_images(models.Model):
     group_name=models.ForeignKey(groups,on_delete=models.CASCADE)
     image=models.ImageField(upload_to=rename_image)
+
+def rename_blog(instance,filename):
+    ext = filename.split('.')[-1]
+    filename = "blog_%s.%s" % (instance.title.replace(' ','_'),ext)
+    return os.path.join('images/', filename)
+
+def blogs(models.Model):
+    title=models.CharField(max_length=264)
+    details=models.TextField(max_length=100000)
+    image=models.ImageField(upload_to=rename_blog)
