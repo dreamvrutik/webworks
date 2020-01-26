@@ -338,3 +338,49 @@ def single_blog(request,title):
     obj=blogs.objects.get(title=title)
     data=[obj.title.upper(),obj.details]
     return render(request,"single_blog.html",context={'data':data,'no_of_events':ct,'events':eves})
+
+def about(request):
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+    return render(request,"about.html",context={'no_of_events':ct,'events':events})
+
+def contact(request):
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+    return render(request,"contact.html",context={'no_of_events':ct,'events':events})
