@@ -30,6 +30,8 @@ urlpatterns = [
     path('events/<title>',views.display_event),
     path('gallery',views.gallery),
     path('gallery/<name>',views.gallery_group),
+    path('blog',views.blog_page),
+    path('blog/<title>',views.single_blog),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
