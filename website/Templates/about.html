@@ -38,12 +38,14 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+	        	<li class="nav-item "><a href="/" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	        	<li class="nav-item"><a href="teacher.html" class="nav-link">Teacher</a></li>
 	        	<li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
 	        	<li class="nav-item"><a href="/gallery" class="nav-link">Gallery</a></li>
 	        	<li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Apply</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -56,7 +58,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">{{data.0}}</h1>
+            <h1 class="mb-2 bread">About Us</h1>
           </div>
         </div>
       </div>
@@ -66,77 +68,77 @@
 			<div class="container">
 				<div class="row">
           <div class="col-lg-8 ftco-animate">
-            <h2 class="mb-3">{{data.0}}</h2>
             <p>{{data.1}}</p>
             </div></div></div>
 		</section>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">{{contact.0}}</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{contact.1}}</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">i{{contact.2}}</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Upcoming Events</h2>
-              {% if no_of_events == 0  %}
-              <div class="block-21 mb-4 d-flex">
-                <div class="text">
-                  <h3 class="heading"><a>No Upcoming Events</a></h3>
-
+        <footer class="ftco-footer ftco-bg-dark ftco-section">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-md-6 col-lg-3">
+                  <div class="ftco-footer-widget mb-5">
+                      <h2 class="ftco-heading-2">Have a Questions?</h2>
+                      <div class="block-23 mb-3">
+                        <ul>
+                          <li><span class="icon icon-map-marker"></span><span class="text">{{contact.0}}</span></li>
+                          <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{contact.1}}</span></a></li>
+                          <li><a href="#"><span class="icon icon-envelope"></span><span class="text">i{{contact.2}}</span></a></li>
+                        </ul>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              {% endif %}
-              {% for i in events %}
-              <div class="block-21 mb-5 d-flex">
-                <a href="{{i.3}}" class="blog-img mr-4" style="background-image: url({{i.2}});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="{{i.3}}">{{i.0}}</a></h3>
-                  <div class="meta">
-                    <div><a href="{{i.3}}"><span class="icon-calendar"></span>&nbsp;{{i.1}}</a></div>
+                <div class="col-md-6 col-lg-3">
+                  <div class="ftco-footer-widget mb-5">
+                    <h2 class="ftco-heading-2">Upcoming Events</h2>
+                    {% if no_of_events == 0  %}
+                    <div class="block-21 mb-4 d-flex">
+                      <div class="text">
+                        <h3 class="heading"><a>No Upcoming Events</a></h3>
+      
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% for i in events %}
+                    <div class="block-21 mb-5 d-flex">
+                      <a href="{{i.3}}" class="blog-img mr-4" style="background-image: url({{i.2}});"></a>
+                      <div class="text">
+                        <h3 class="heading"><a href="{{i.3}}">{{i.0}}</a></h3>
+                        <div class="meta">
+                          <div><a href="{{i.3}}"><span class="icon-calendar"></span>&nbsp;{{i.1}}</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                  <div class="ftco-footer-widget mb-5 ml-md-4">
+                    <h2 class="ftco-heading-2">Links</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                      <li><a href="/about"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                      <li><a href="/events"><span class="ion-ios-arrow-round-forward mr-2"></span>Events</a></li>
+                      <li><a href="/gallery"><span class="ion-ios-arrow-round-forward mr-2"></span>Gallery</a></li>
+                      <li><a href="/blog"><span class="ion-ios-arrow-round-forward mr-2"></span>Blog</a></li>
+                      <li><a href="/contact"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                  <div class="ftco-footer-widget mb-5">
+                      <h2 class="ftco-heading-2">Subscribe Us!</h2>
+                    <form action="#" class="subscribe-form">
+                      <div class="form-group">
+                        <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+                        <input type="submit" value="Subscribe" class="form-control submit px-3">
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              {% endfor %}
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="/"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="/about"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="/events"><span class="ion-ios-arrow-round-forward mr-2"></span>Events</a></li>
-                <li><a href="/gallery"><span class="ion-ios-arrow-round-forward mr-2"></span>Gallery</a></li>
-                <li><a href="/blog"><span class="ion-ios-arrow-round-forward mr-2"></span>Blog</a></li>
-                <li><a href="/contact"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Subscribe Us!</h2>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+          </footer>
+
 
 
   <!-- loader -->

@@ -53,3 +53,6 @@ class blogs(models.Model):
     title=models.CharField(max_length=264)
     details=models.TextField(max_length=100000)
     image=models.ImageField(upload_to=rename_blog)
+
+class about_us(models.Model):
+    details=models.TextField()

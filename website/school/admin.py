@@ -6,4 +6,5 @@ admin.site.register(events)
 admin.site.register(groups)
 admin.site.register(group_images)
 admin.site.register(blogs)
+admin.site.register(about_us)
 
