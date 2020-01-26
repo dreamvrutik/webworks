@@ -48,7 +48,7 @@ def rename_blog(instance,filename):
     filename = "blog_%s.%s" % (instance.title.replace(' ','_'),ext)
     return os.path.join('images/', filename)
 
-def blogs(models.Model):
+class blogs(models.Model):
     title=models.CharField(max_length=264)
     details=models.TextField(max_length=100000)
     image=models.ImageField(upload_to=rename_blog)
