@@ -1,4 +1,5 @@
 from django.db import models
+
 import os
 # Create your models here.
 def rename(instance,filename):
@@ -13,12 +14,12 @@ def rename_event(instance,filename):
 
 class approach(models.Model):
     name=models.CharField(max_length=264)
-    details=models.CharField(max_length=100000)
+    details=models.TextField()
     image=models.ImageField(upload_to=rename)
 
 class events(models.Model):
     name=models.CharField(max_length=264)
-    details=models.CharField(max_length=100000)
+    details=models.TextField()
     date=models.DateField()
     image=models.ImageField(upload_to=rename_event)
 
