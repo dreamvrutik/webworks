@@ -19,6 +19,9 @@ from school import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+admin.site.site_header = "Bhashyam Admin"
+admin.site.site_title = "Bhashyam Admin Portal"
+admin.site.index_title = "Welcome to Bhashyam Admin Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
