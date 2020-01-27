@@ -45,7 +45,11 @@ def index(request):
         con.append(i.mobile_number)
         con.append(i.email)
         break
-    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con})
+    tiles=[]
+    obj=school_tiles.objects.all()
+    for i in obj:
+        tiles.append([i.title,'/school/'+i.title.replace(' ','_')])
+    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con,'tiles':tiles})
 
 def pre(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
@@ -488,3 +492,38 @@ def contact(request):
         con.append(i.email)
         break
     return render(request,"contact.html",context={'no_of_events':ct,'events':eves,'contact':con})
+
+def school_text(request,text):
+    obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')
+    eves=[]
+    ct=0
+    for i in obj:
+        a=[]
+        a.append(i.name)
+        x=str(i.date)
+        x=x.split('-')
+        x=x[2]+'-'+x[1]+'-'+x[0]
+        a.append(x)
+        img="/media/"+str(i.image)
+        a.append(img)
+        x=i.name
+        x=x.replace(' ','_')
+        x="/events/"+x
+        a.append(x)
+        eves.append(a)
+        ct+=1
+        if ct==2:
+            break
+
+    text=text.replace('_',' ')
+    obj=school_tiles.objects.get(title=text)
+    data=[text,obj.details]
+    con=[]
+    obj=contact_us.objects.all()
+    ctt=0
+    for i in obj:
+        con.append(i.address)
+        con.append(i.mobile_number)
+        con.append(i.email)
+        break
+    return render(request,'approach.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con})

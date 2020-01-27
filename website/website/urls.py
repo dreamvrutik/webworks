@@ -36,7 +36,8 @@ urlpatterns = [
     path('blog',views.blog_page),
     path('blog/<title>',views.single_blog),
     path('about',views.about),
-    path('contact',views.contact)
+    path('contact',views.contact),
+    path('school/<text>',views.school_text)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

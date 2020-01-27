@@ -75,3 +75,9 @@ class contact_us(models.Model):
     email=models.CharField(max_length=264)
     class Meta:
         verbose_name_plural = "Contact_Us"
+
+class school_tiles(models.Model):
+    title=models.CharField(max_length=264)
+    details=models.TextField(max_length=100000)
+    class Meta:
+        verbose_name_plural = "School_Tiles"
