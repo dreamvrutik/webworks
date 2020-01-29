@@ -81,3 +81,16 @@ class school_tiles(models.Model):
     details=models.TextField(max_length=100000)
     class Meta:
         verbose_name_plural = "School_Tiles"
+
+def rename_carousel(instance,filename):
+    ext = filename.split('.')[-1]
+    filename = "blog_%s.%s" % (instance.title.replace(' ','_'),ext)
+    return os.path.join('images/', filename)
+
+
+class Carousel(models.Model):
+    image=models.ImageField(upload_to=rename_carousel)
+    title=models.CharField(max_length=264)
+    details=models.TextField(max_length=100000)
+    class Meta:
+        verbose_name_plural = "Carousel"

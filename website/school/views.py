@@ -49,7 +49,15 @@ def index(request):
     obj=school_tiles.objects.all()
     for i in obj:
         tiles.append([i.title,'/school/'+i.title.replace(' ','_')])
-    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con,'tiles':tiles})
+    car=[]
+    obj=Carousel.objects.all()
+    for i in obj:
+        a=[]
+        a.append("/media/"+str(i.image))
+        a.append(i.title)
+        a.append(i.details)
+        car.append(a)
+    return render(request,'index.html',context={'data':data,'no_of_events':ct,'events':eves,'contact':con,'tiles':tiles,'carousel':car})
 
 def pre(request):
     obj=events.objects.filter(date__gte=datetime.datetime.now()).order_by('date')

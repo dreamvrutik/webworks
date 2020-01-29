@@ -54,29 +54,19 @@
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url({% static 'images/bg_1.jpg' %});">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-8 text-center ftco-animate">
-            <h1 class="mb-4">Our Mission</h1>
-            <h5 class="mb-0" style="color: white">To mould the students who will determine the future of the nation, to provide students with quality education, develop them to their full potential for the highly competitive world with unflinching determination and noble dedication and nurture them to lead the country to the next level.</h5>
+      {% for i in carousel %}
+        <div class="slider-item" style="background-image:url({{i.0}});">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-8 text-center ftco-animate">
+              <h1 class="mb-4">{{i.1}}</h1>
+              <h5 class="mb-0" style="color: white">{{i.2}}</h5>
+            </div>
+          </div>
           </div>
         </div>
-        </div>
-      </div>
-
-      <div class="slider-item" style="background-image:url({% static 'images/bg_2.jpg' %});">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-8 text-center ftco-animate">
-            <h1 class="mb-4">Our Vision</h1>
-            <h5 class="mb-0" style="color: white">To build a community of thinking and committed citizens with desire, direction, dedication, discipline and moral values to meet future global challenges</h5>
-          </div>
-        </div>
-        </div>
-      </div>
+      {% endfor %}
     </section>
 
     <section class="ftco-services ftco-no-pb">
